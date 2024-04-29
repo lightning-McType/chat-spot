@@ -7,9 +7,9 @@ import messageRoutes from './routes/message.routes.js';
 import usersRoutes from './routes/user.routes.js';
 
 import connectToDB from './db/connectToDB.js';
+import { app, server } from './socket/socket.js';
 
 dotenv.config();
-const app = express();
 
 const PORT = process.env.PORT || 8081;
 
@@ -24,7 +24,7 @@ app.use('/api/users', usersRoutes);
 // 	res.send('Hello World!');
 // });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	connectToDB();
 	console.log(`Server is running on the port ${PORT}`);
 });
